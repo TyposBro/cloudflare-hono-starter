@@ -1,5 +1,11 @@
 # Cloudflare Workers API Template
 
+[![CI](https://github.com/TyposBro/cloudflare-hono-starter/actions/workflows/ci.yml/badge.svg)](https://github.com/TyposBro/cloudflare-hono-starter/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.7-3178c6.svg)](https://www.typescriptlang.org/)
+[![Hono](https://img.shields.io/badge/Hono-4.7-E36002.svg)](https://hono.dev)
+[![Cloudflare Workers](https://img.shields.io/badge/Cloudflare-Workers-F38020.svg)](https://developers.cloudflare.com/workers/)
+
 Production-ready API starter built with **Hono.js**, **Cloudflare D1**, **Drizzle ORM**, and **Zod** — organized using **vertical slice architecture** and **SOLID principles**.
 
 Battle-tested patterns extracted from a production app serving real users.
