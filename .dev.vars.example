@@ -1,0 +1,6 @@
+# Copy this file to .dev.vars and fill in the values.
+# These are injected as env vars during local development (wrangler dev).
+# For production, set them via: npx wrangler secret put <KEY>
+
+JWT_SECRET=change-me-to-a-random-string
+JWT_SECRET_ADMIN=change-me-to-a-different-random-string

@@ -1,0 +1,32 @@
+{
+  "name": "cf-hono-d1-drizzle-template",
+  "version": "1.0.0",
+  "description": "Production-ready Cloudflare Workers API template with Hono, D1, Drizzle ORM, and vertical slice architecture",
+  "private": true,
+  "scripts": {
+    "dev": "wrangler dev",
+    "dev:remote": "wrangler dev --remote",
+    "deploy": "wrangler deploy",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate:local": "wrangler d1 migrations apply my-app-db --local",
+    "db:migrate:remote": "wrangler d1 migrations apply my-app-db --remote",
+    "db:studio": "drizzle-kit studio",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@hono/swagger-ui": "^0.5.3",
+    "@hono/zod-openapi": "^0.18.4",
+    "drizzle-orm": "^0.39.3",
+    "hono": "^4.7.4",
+    "zod": "^3.24.2"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20250214.0",
+    "drizzle-kit": "^0.30.5",
+    "typescript": "^5.7.3",
+    "vitest": "^3.0.5",
+    "wrangler": "^3.109.2"
+  }
+}

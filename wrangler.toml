@@ -1,0 +1,70 @@
+# ──────────────────────────────────────────────────────────
+# Cloudflare Workers Configuration
+# Docs: https://developers.cloudflare.com/workers/wrangler/configuration/
+# ──────────────────────────────────────────────────────────
+
+name = "my-app-api"
+main = "src/index.ts"
+compatibility_date = "2024-12-01"
+compatibility_flags = ["nodejs_compat"]
+
+# ── D1 Database ──────────────────────────────────────────
+# Create with: npx wrangler d1 create my-app-db
+[[d1_databases]]
+binding = "DB"
+database_name = "my-app-db"
+database_id = ""                       # <-- paste your database_id here
+migrations_dir = "migrations"
+
+# ── R2 Storage (optional) ───────────────────────────────
+# Create with: npx wrangler r2 bucket create my-app-cdn
+# [[r2_buckets]]
+# binding = "CDN_BUCKET"
+# bucket_name = "my-app-cdn"
+
+# ── Queues (optional) ───────────────────────────────────
+# Create with: npx wrangler queues create my-queue
+# [[queues.producers]]
+# binding = "MY_QUEUE"
+# queue = "my-queue"
+
+# [[queues.consumers]]
+# queue = "my-queue"
+# max_batch_size = 10
+# max_batch_timeout = 30
+
+# ── Durable Objects (optional) ──────────────────────────
+# [[durable_objects.bindings]]
+# name = "ASYNC_RESULT"
+# class_name = "AsyncResultDO"
+
+# [[migrations]]
+# tag = "v1"
+# new_classes = ["AsyncResultDO"]
+
+# ── Cron Triggers ───────────────────────────────────────
+# Expressions MUST match the keys in src/cron/index.ts
+[triggers]
+crons = [
+  "0 3 * * *",   # Daily 03:00 UTC — cleanup expired subscriptions
+  "0 4 * * *",   # Daily 04:00 UTC — purge stale rate-limit entries
+]
+
+# ── Environment Variables ────────────────────────────────
+[vars]
+ENVIRONMENT = "production"
+# R2_PUBLIC_URL = "https://pub-xxx.r2.dev"  # uncomment when using R2
+
+# ── Staging Environment (optional) ──────────────────────
+# Deploy with: npx wrangler deploy --env staging
+[env.staging]
+name = "my-app-api-staging"
+
+[env.staging.vars]
+ENVIRONMENT = "staging"
+
+# [[env.staging.d1_databases]]
+# binding = "DB"
+# database_name = "my-app-db-staging"
+# database_id = ""
+# migrations_dir = "migrations"
