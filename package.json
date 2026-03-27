@@ -16,10 +16,10 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@hono/swagger-ui": "^0.5.3",
-    "@hono/zod-openapi": "^1.2.2",
+    "@hono/swagger-ui": "^0.6.1",
+    "@hono/zod-openapi": "^1.2.3",
     "drizzle-orm": "^0.45.1",
-    "hono": "^4.7.4",
+    "hono": "^4.12.9",
     "zod": "^4.3.6"
   },
   "devDependencies": {
